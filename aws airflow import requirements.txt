@@ -1,0 +1,23 @@
+aws airflow에 requirements.txt를 추가하는 방법
+
+이번주에 서버에 있는 airflow를 mwaa airflow로 이전하는 작업을 진행했다.
+s3에 dag를 올렸는데 mysql, telegram과 같은 모듈이 인식되지 않아서 대그를 사용할 수 없었다.
+requirements를 추가하면 해결된다하여 지금부터 requirements를 추가하는 과정을 작성해본다.
+먼저 서버에서 pip freeze > requirements.txt 명령어를 실행한다.
+pip freeze란 서버에 설치된 파이썬 패키지의 목록을 출력해주는 명령어이고, 출력문은 requirements.txt에 저장이 된다.
+해당 파일을 다운 받은 후 파일을 열어서 --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-{Airflow-version}/constraints-{Python-version}.txt"
+을 입력한다.
+({Airflow-version},{Python-version}은 현재 aws 에어플로우에서 사용하는 에어플로우 버전와 파이썬 버전을 입력한다.) 
+그 다음 click==3.7.1처럼 패키지와 버전이 있을 때, 모든 패키지의 버전을 지워준다.
+
+[requirements.txt]
+constraints-{2.8}/constraints-{3.12}.txt"
+click
+mysql
+telegram
+...
+
+requirements파일은 위의 형태로 된다.
+
+requirements파일을 mwaa airflow 환경에서 넣어준다.
+업데이트 되는데 꽤 오랜 시간이 걸리므로 업데이트가 되는 것을 지켜보면 된다.
