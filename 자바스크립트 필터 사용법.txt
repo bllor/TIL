@@ -1,0 +1,24 @@
+자바스크립트 필터 사용법
+filter 매서드는 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환합니다.
+즉, 배열에서 특정 조건을 만족하는 요소들만 걸러내어 새로운 배열을 만들 때 사용하는 메서드입니다.
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+여기서 짝수에 해당되는 숫자만 출력하려면
+filter 함수를 사용하지 않고 for문으로 출력하려면
+let a = [];
+for(let i = 0; i<numbers.length;i++){
+    if (numbers[i]%2==0){
+        a.push(numbers[i])
+    }else{
+        continue
+    }
+}
+console.log(a)
+와 같이 입력해야 한다.
+filter 매서드를 사용하면
+let b = numbers.filter(x=> x%2==0)
+더 간결하게 표현할 수 있다.
+여기서 x는 numbers배열의 현재요소를 의미합니다
+=>다음에 조건이 나오는데, 조건이 참일 경우 b에 numbers의 현재요소를 추가합니다.
+
+
