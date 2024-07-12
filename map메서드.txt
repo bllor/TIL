@@ -1,0 +1,6 @@
+map 메서드 사용
+
+result: {category: string, price: number}[] = [];
+--> 위와 같은 선언을 통해 result는 {category: string, price: number}와 같은 형태의 객체들만 포함할 수 있다.
+
+["a"]
